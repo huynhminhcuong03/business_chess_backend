@@ -2,11 +2,13 @@ package com.businesschess.dto.response;
 
 import java.time.LocalDateTime;
 
-public class BoardResponse {
+public class PlayerResponse {
 
     private Long id;
 
-    private String name;
+    private String username;
+
+    private String displayName;
 
     private LocalDateTime createdAt;
 
@@ -18,12 +20,20 @@ public class BoardResponse {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
     }
 
     public LocalDateTime getCreatedAt() {

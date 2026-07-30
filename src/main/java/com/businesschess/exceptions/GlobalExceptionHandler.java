@@ -10,13 +10,14 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(AppException.class)
-    public ResponseEntity<ApiResponse<Void>> handleAppException(
+    public ResponseEntity<ApiResponse> handleAppException(
             AppException exception
     ) {
         ErrorCode errorCode = exception.getErrorCode();
 
-        ApiResponse<Void> response = ApiResponse.<Void>builder()
+        ApiResponse response = ApiResponse.builder()
                 .code(errorCode.getStatus().value())
+                .status(errorCode.getStatus().getReasonPhrase())
                 .message(errorCode.getMessage())
                 .build();
 
