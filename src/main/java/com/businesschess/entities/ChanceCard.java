@@ -1,7 +1,10 @@
 package com.businesschess.entities;
 
+import com.businesschess.enums.CardActionType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,8 +31,9 @@ public class ChanceCard {
     @Column(nullable = false, columnDefinition = "text")
     private String description;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "action_type", nullable = false, length = 50)
-    private String actionType;
+    private CardActionType actionType;
 
     @Column(name = "action_data", columnDefinition = "json")
     private String actionData;
@@ -71,11 +75,11 @@ public class ChanceCard {
         this.description = description;
     }
 
-    public String getActionType() {
+    public CardActionType getActionType() {
         return actionType;
     }
 
-    public void setActionType(String actionType) {
+    public void setActionType(CardActionType actionType) {
         this.actionType = actionType;
     }
 

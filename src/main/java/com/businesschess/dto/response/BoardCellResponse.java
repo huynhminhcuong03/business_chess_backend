@@ -1,5 +1,7 @@
 package com.businesschess.dto.response;
 
+import com.businesschess.enums.BoardCellType;
+
 public class BoardCellResponse {
 
     private Long id;
@@ -10,7 +12,7 @@ public class BoardCellResponse {
 
     private String name;
 
-    private String type;
+    private BoardCellType type;
 
     private String color;
 
@@ -50,11 +52,11 @@ public class BoardCellResponse {
         this.name = name;
     }
 
-    public String getType() {
+    public BoardCellType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(BoardCellType type) {
         this.type = type;
     }
 

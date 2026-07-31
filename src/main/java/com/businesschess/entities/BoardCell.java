@@ -1,7 +1,10 @@
 package com.businesschess.entities;
 
+import com.businesschess.enums.BoardCellType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -36,8 +39,9 @@ public class BoardCell {
     @Column(nullable = false, length = 100)
     private String name;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
-    private String type;
+    private BoardCellType type;
 
     @Column(length = 20)
     private String color;
@@ -80,11 +84,11 @@ public class BoardCell {
         this.name = name;
     }
 
-    public String getType() {
+    public BoardCellType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(BoardCellType type) {
         this.type = type;
     }
 

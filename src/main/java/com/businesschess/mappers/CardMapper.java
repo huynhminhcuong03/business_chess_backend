@@ -1,7 +1,9 @@
 package com.businesschess.mappers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.TextNode;
 import com.businesschess.dto.response.CardResponse;
 import com.businesschess.entities.ChanceCard;
 import com.businesschess.entities.CommunityCard;
@@ -21,6 +23,7 @@ public class CardMapper {
         CardResponse response = new CardResponse();
         response.setId(card.getId());
         response.setBoardId(card.getBoard().getId());
+        response.setType("CHANCE");
         response.setTitle(card.getTitle());
         response.setDescription(card.getDescription());
         response.setActionType(card.getActionType());
@@ -38,6 +41,7 @@ public class CardMapper {
         CardResponse response = new CardResponse();
         response.setId(card.getId());
         response.setBoardId(card.getBoard().getId());
+        response.setType("COMMUNITY");
         response.setTitle(card.getTitle());
         response.setDescription(card.getDescription());
         response.setActionType(card.getActionType());
@@ -47,7 +51,7 @@ public class CardMapper {
         return response;
     }
 
-    private Object toActionData(String actionData) {
+    private JsonNode toActionData(String actionData) {
         if (actionData == null || actionData.isBlank()) {
             return null;
         }
@@ -55,7 +59,7 @@ public class CardMapper {
         try {
             return objectMapper.readTree(actionData);
         } catch (JsonProcessingException exception) {
-            return actionData;
+            return TextNode.valueOf(actionData);
         }
     }
 }

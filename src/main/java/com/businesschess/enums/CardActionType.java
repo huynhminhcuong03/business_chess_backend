@@ -1,0 +1,15 @@
+package com.businesschess.enums;
+
+public enum CardActionType {
+    COLLECT_FROM_EACH_PLAYER,
+    GET_OUT_OF_JAIL,
+    GO_TO_JAIL,
+    MOVE_BACK,
+    MOVE_TO_NEAREST_STATION,
+    MOVE_TO_NEAREST_UTILITY,
+    MOVE_TO_POSITION,
+    PAY_EACH_PLAYER,
+    PAY_TO_BANK,
+    RECEIVE_FROM_BANK,
+    REPAIR_PROPERTIES
+}

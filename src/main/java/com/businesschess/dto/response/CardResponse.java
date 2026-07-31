@@ -1,18 +1,23 @@
 package com.businesschess.dto.response;
 
+import com.businesschess.enums.CardActionType;
+import com.fasterxml.jackson.databind.JsonNode;
+
 public class CardResponse {
 
     private Long id;
 
     private Long boardId;
 
+    private String type;
+
     private String title;
 
     private String description;
 
-    private String actionType;
+    private CardActionType actionType;
 
-    private Object actionData;
+    private JsonNode actionData;
 
     private Integer amount;
 
@@ -34,6 +39,14 @@ public class CardResponse {
         this.boardId = boardId;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -50,19 +63,19 @@ public class CardResponse {
         this.description = description;
     }
 
-    public String getActionType() {
+    public CardActionType getActionType() {
         return actionType;
     }
 
-    public void setActionType(String actionType) {
+    public void setActionType(CardActionType actionType) {
         this.actionType = actionType;
     }
 
-    public Object getActionData() {
+    public JsonNode getActionData() {
         return actionData;
     }
 
-    public void setActionData(Object actionData) {
+    public void setActionData(JsonNode actionData) {
         this.actionData = actionData;
     }
 

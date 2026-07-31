@@ -29,6 +29,16 @@ public enum ErrorCode {
             "Game is not waiting"
     ),
 
+    GAME_NOT_PLAYING(
+            HttpStatus.BAD_REQUEST,
+            "Game is not playing"
+    ),
+
+    PLAYER_NOT_FOUND(
+            HttpStatus.NOT_FOUND,
+            "Player not found"
+    ),
+
     PLAYER_ALREADY_JOINED(
             HttpStatus.CONFLICT,
             "Player already joined this game"
