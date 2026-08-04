@@ -9,6 +9,16 @@ public enum ErrorCode {
             "Board not found"
     ),
 
+    BOARD_CELLS_NOT_FOUND(
+            HttpStatus.NOT_FOUND,
+            "Board cells not found"
+    ),
+
+    BOARD_CELL_NOT_FOUND(
+            HttpStatus.NOT_FOUND,
+            "Board cell not found"
+    ),
+
     CARDS_NOT_FOUND(
             HttpStatus.NOT_FOUND,
             "Cards not found"
@@ -37,6 +47,66 @@ public enum ErrorCode {
     PLAYER_NOT_FOUND(
             HttpStatus.NOT_FOUND,
             "Player not found"
+    ),
+
+    PLAYER_NOT_IN_GAME(
+            HttpStatus.BAD_REQUEST,
+            "Player is not in this game"
+    ),
+
+    PLAYER_NOT_CURRENT_TURN(
+            HttpStatus.BAD_REQUEST,
+            "It is not this player's turn"
+    ),
+
+    PLAYER_NOT_ON_CELL(
+            HttpStatus.BAD_REQUEST,
+            "Player is not on this board cell"
+    ),
+
+    PROPERTY_NOT_PURCHASABLE(
+            HttpStatus.BAD_REQUEST,
+            "Property cannot be purchased"
+    ),
+
+    PROPERTY_DETAIL_NOT_FOUND(
+            HttpStatus.NOT_FOUND,
+            "Property detail not found"
+    ),
+
+    PROPERTY_ALREADY_OWNED(
+            HttpStatus.CONFLICT,
+            "Property already owned"
+    ),
+
+    PROPERTY_NOT_OWNED(
+            HttpStatus.BAD_REQUEST,
+            "Property is not owned"
+    ),
+
+    PROPERTY_OWNED_BY_PLAYER(
+            HttpStatus.BAD_REQUEST,
+            "Player owns this property"
+    ),
+
+    PLAYER_NOT_ENOUGH_MONEY(
+            HttpStatus.BAD_REQUEST,
+            "Player does not have enough money"
+    ),
+
+    DICE_TOTAL_REQUIRED(
+            HttpStatus.BAD_REQUEST,
+            "Dice total is required"
+    ),
+
+    TAX_OPTION_REQUIRED(
+            HttpStatus.BAD_REQUEST,
+            "Income tax option is required"
+    ),
+
+    PLAYER_NOT_ON_TAX_CELL(
+            HttpStatus.BAD_REQUEST,
+            "Player is not on a tax cell"
     ),
 
     PLAYER_ALREADY_JOINED(
