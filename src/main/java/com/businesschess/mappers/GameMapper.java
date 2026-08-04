@@ -3,17 +3,23 @@ package com.businesschess.mappers;
 import java.util.List;
 
 import com.businesschess.dto.response.GamePlayerResponse;
+import com.businesschess.dto.response.GamePropertyResponse;
 import com.businesschess.dto.response.GameResponse;
 import com.businesschess.dto.response.PlayerResponse;
 import com.businesschess.entities.Game;
 import com.businesschess.entities.GamePlayer;
+import com.businesschess.entities.GameProperty;
 import com.businesschess.entities.Player;
 import org.springframework.stereotype.Component;
 
 @Component
 public class GameMapper {
 
-    public GameResponse toResponse(Game game, List<GamePlayer> gamePlayers) {
+    public GameResponse toResponse(
+            Game game,
+            List<GamePlayer> gamePlayers,
+            List<GameProperty> gameProperties
+    ) {
         if (game == null) {
             return null;
         }
@@ -33,6 +39,29 @@ public class GameMapper {
         response.setPlayers(gamePlayers == null ? null : gamePlayers.stream()
                 .map(this::toResponse)
                 .toList());
+        response.setProperties(gameProperties == null
+                ? List.of()
+                : gameProperties.stream()
+                .map(this::toResponse)
+                .toList());
+        return response;
+    }
+
+    public GamePropertyResponse toResponse(GameProperty gameProperty) {
+        if (gameProperty == null) {
+            return null;
+        }
+
+        GamePropertyResponse response = new GamePropertyResponse();
+        response.setId(gameProperty.getId());
+        response.setBoardCellId(gameProperty.getBoardCell().getId());
+        response.setBoardCellPosition(gameProperty.getBoardCell().getPosition());
+        response.setBoardCellName(gameProperty.getBoardCell().getName());
+        response.setOwnerGamePlayerId(gameProperty.getOwner().getId());
+        response.setOwnerPlayerId(gameProperty.getOwner().getPlayer().getId());
+        response.setHouseCount(gameProperty.getHouseCount());
+        response.setHasHotel(gameProperty.getHasHotel());
+        response.setMortgaged(gameProperty.getMortgaged());
         return response;
     }
 

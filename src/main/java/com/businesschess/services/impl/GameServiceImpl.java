@@ -27,6 +27,7 @@ import com.businesschess.repositories.ChanceCardRepository;
 import com.businesschess.repositories.CommunityCardRepository;
 import com.businesschess.repositories.GameCardDeckRepository;
 import com.businesschess.repositories.GamePlayerRepository;
+import com.businesschess.repositories.GamePropertyRepository;
 import com.businesschess.repositories.GameRepository;
 import com.businesschess.repositories.PlayerRepository;
 import com.businesschess.services.GameService;
@@ -45,6 +46,7 @@ public class GameServiceImpl implements GameService {
     private final ChanceCardRepository chanceCardRepository;
     private final CommunityCardRepository communityCardRepository;
     private final GameCardDeckRepository gameCardDeckRepository;
+    private final GamePropertyRepository gamePropertyRepository;
     private final GameMapper gameMapper;
 
     public GameServiceImpl(
@@ -55,6 +57,7 @@ public class GameServiceImpl implements GameService {
             ChanceCardRepository chanceCardRepository,
             CommunityCardRepository communityCardRepository,
             GameCardDeckRepository gameCardDeckRepository,
+            GamePropertyRepository gamePropertyRepository,
             GameMapper gameMapper
     ) {
         this.boardRepository = boardRepository;
@@ -64,6 +67,7 @@ public class GameServiceImpl implements GameService {
         this.chanceCardRepository = chanceCardRepository;
         this.communityCardRepository = communityCardRepository;
         this.gameCardDeckRepository = gameCardDeckRepository;
+        this.gamePropertyRepository = gamePropertyRepository;
         this.gameMapper = gameMapper;
     }
 
@@ -183,7 +187,11 @@ public class GameServiceImpl implements GameService {
     }
 
     private GameResponse toGameResponse(Game game) {
-        return gameMapper.toResponse(game, gamePlayerRepository.findByGameIdOrderByTurnOrderAsc(game.getId()));
+        return gameMapper.toResponse(
+                game,
+                gamePlayerRepository.findByGameIdOrderByTurnOrderAsc(game.getId()),
+                gamePropertyRepository.findAllByGameId(game.getId())
+        );
     }
 
     private void initializeDecks(Game game) {

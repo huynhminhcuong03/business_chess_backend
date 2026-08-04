@@ -32,6 +32,8 @@ public class GameResponse {
 
     private List<GamePlayerResponse> players;
 
+    private List<GamePropertyResponse> properties;
+
     public Long getId() {
         return id;
     }
@@ -126,5 +128,13 @@ public class GameResponse {
 
     public void setPlayers(List<GamePlayerResponse> players) {
         this.players = players;
+    }
+
+    public List<GamePropertyResponse> getProperties() {
+        return properties;
+    }
+
+    public void setProperties(List<GamePropertyResponse> properties) {
+        this.properties = properties;
     }
 }
