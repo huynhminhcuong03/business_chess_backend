@@ -23,6 +23,12 @@ public interface GameCardDeckRepository extends JpaRepository<GameCardDeck, Long
             CardType cardType
     );
 
+    // Tìm thẻ ra tù đang được một người chơi giữ để trả lại deck sau khi sử dụng.
+    Optional<GameCardDeck> findFirstByGameIdAndHeldByPlayerIdAndUsedTrueOrderByIdAsc(
+            Long gameId,
+            Long heldByPlayerId
+    );
+
     @Query("""
             select coalesce(max(deck.deckOrder), -1)
             from GameCardDeck deck

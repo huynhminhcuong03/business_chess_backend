@@ -109,6 +109,46 @@ public enum ErrorCode {
             "Player is not on a tax cell"
     ),
 
+    PLAYER_NOT_ON_GO_TO_JAIL_CELL(
+            HttpStatus.BAD_REQUEST,
+            "Player is not on go to jail cell"
+    ),
+
+    PLAYER_NOT_ON_CARD_CELL(
+            HttpStatus.BAD_REQUEST,
+            "Player is not on a chance or community card cell"
+    ),
+
+    CARD_AMOUNT_REQUIRED(
+            HttpStatus.BAD_REQUEST,
+            "Card amount is required"
+    ),
+
+    CARD_TARGET_POSITION_REQUIRED(
+            HttpStatus.BAD_REQUEST,
+            "Card target position is required"
+    ),
+
+    CARD_ACTION_DATA_INVALID(
+            HttpStatus.BAD_REQUEST,
+            "Card action data is invalid"
+    ),
+
+    PLAYER_IN_JAIL(
+            HttpStatus.BAD_REQUEST,
+            "Player must choose a jail action before rolling dice"
+    ),
+
+    PLAYER_NOT_IN_JAIL(
+            HttpStatus.BAD_REQUEST,
+            "Player is not in jail"
+    ),
+
+    JAIL_CARD_NOT_AVAILABLE(
+            HttpStatus.BAD_REQUEST,
+            "Player does not have a get out of jail card"
+    ),
+
     PLAYER_ALREADY_JOINED(
             HttpStatus.CONFLICT,
             "Player already joined this game"

@@ -1,6 +1,10 @@
 package com.businesschess.dto.response;
 
-public class RollDiceResponse {
+import com.businesschess.enums.JailActionType;
+
+public class JailActionResponse {
+
+    private JailActionType actionType;
 
     private Integer dice1;
 
@@ -9,6 +13,8 @@ public class RollDiceResponse {
     private Integer total;
 
     private Boolean isDouble;
+
+    private Boolean moved;
 
     private Integer oldPosition;
 
@@ -24,16 +30,21 @@ public class RollDiceResponse {
 
     private Long nextPlayerId;
 
-    // true khi người chơi bị đưa thẳng vào tù, ví dụ do đổ đôi 3 lần liên tiếp.
-    private Boolean sentToJail;
-
-    private Integer jailPosition;
-
     private Boolean inJail;
 
     private Integer jailTurn;
 
     private Integer jailFreeCard;
+
+    private Integer finePaid;
+
+    public JailActionType getActionType() {
+        return actionType;
+    }
+
+    public void setActionType(JailActionType actionType) {
+        this.actionType = actionType;
+    }
 
     public Integer getDice1() {
         return dice1;
@@ -65,6 +76,14 @@ public class RollDiceResponse {
 
     public void setIsDouble(Boolean isDouble) {
         this.isDouble = isDouble;
+    }
+
+    public Boolean getMoved() {
+        return moved;
+    }
+
+    public void setMoved(Boolean moved) {
+        this.moved = moved;
     }
 
     public Integer getOldPosition() {
@@ -123,22 +142,6 @@ public class RollDiceResponse {
         this.nextPlayerId = nextPlayerId;
     }
 
-    public Boolean getSentToJail() {
-        return sentToJail;
-    }
-
-    public void setSentToJail(Boolean sentToJail) {
-        this.sentToJail = sentToJail;
-    }
-
-    public Integer getJailPosition() {
-        return jailPosition;
-    }
-
-    public void setJailPosition(Integer jailPosition) {
-        this.jailPosition = jailPosition;
-    }
-
     public Boolean getInJail() {
         return inJail;
     }
@@ -161,5 +164,13 @@ public class RollDiceResponse {
 
     public void setJailFreeCard(Integer jailFreeCard) {
         this.jailFreeCard = jailFreeCard;
+    }
+
+    public Integer getFinePaid() {
+        return finePaid;
+    }
+
+    public void setFinePaid(Integer finePaid) {
+        this.finePaid = finePaid;
     }
 }
